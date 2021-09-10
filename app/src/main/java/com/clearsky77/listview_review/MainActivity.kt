@@ -32,17 +32,18 @@ class MainActivity : AppCompatActivity() {
         studentListView.adapter = mAdapter
 
 
-//        리스튜뷰의 각 줄이 눌렸을 때 이벤트 처리// Item인 것 주의!!!!!!!!!!
+//        리스튜뷰의 각 줄이 눌렸을 때 이벤트 처리  // Item인 것 주의!
         studentListView.setOnItemClickListener { adapterView, view, position, l ->
             Log.d("리스트 뷰 눌린 줄:", position.toString())
             var clickedStudent = mStudentList[position]
             Toast.makeText(this, clickedStudent.name, Toast.LENGTH_SHORT).show()
         }
 
+        // Item인 것 주의!
         studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
             val clickedStudent = mStudentList[position]
             //누가 길게 눌렸는지 토스트 출력.
-            Toast.makeText(this, "${clickedStudent.name}이(가) 길게 눌렸음.", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "${clickedStudent.name}이(가) 길게 눌렸음.", Toast.LENGTH_SHORT).show()
 
             //경고창. 삭제 [확인] [취소] 버튼
             val alert = AlertDialog.Builder(this)
