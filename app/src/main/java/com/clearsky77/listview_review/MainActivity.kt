@@ -2,6 +2,8 @@ package com.clearsky77.listview_review
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.clearsky77.listview_review.adapters.StudentAdapter
 import com.clearsky77.listview_review.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,6 +30,20 @@ class MainActivity : AppCompatActivity() {
         studentListView.adapter = mAdapter
 
 
+//        리스튜뷰의 각 줄이 눌렸을 때 이벤트 처리// Item인 것 주의!!!!!!!!!!
+        studentListView.setOnItemClickListener { adapterView, view, position, l ->
+            Log.d("리스트 뷰 눌린 줄:", position.toString() )
+            var clickedStudent = mStudentList[position]
+            Toast.makeText( this, clickedStudent.name, Toast.LENGTH_SHORT ).show()
+        }
+
+
+//        리스튜뷰의 아이템 길게 눌렀을 때
+//            경고창. 진짜 삭제할 것인지 확인 -> 확인 눌렀을 때만 삭제.
+//                확인을 누르면 실행할 부분
+        //목록(mStudentList)에서 제거 => 리스트뷰에서도 빠지게.
+//            리스트 뷰의 어댑터에 변경 사항을 공지해줘야한다. 아니면 에러.
+        //마지막에 결과로 true/false 지정 필요
 
     }
 
