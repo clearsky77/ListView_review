@@ -37,8 +37,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText( this, clickedStudent.name, Toast.LENGTH_SHORT ).show()
         }
 
+        studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
+            val clickedStudent = mStudentList[position]
+            //누가 길게 눌렸는지 토스트 출력.
+            Toast.makeText(this, "${clickedStudent.name}이(가) 길게 눌렸음.", Toast.LENGTH_SHORT).show()
+            //마지막에 결과로 true/false 지정 필요
+            return@setOnItemLongClickListener true //false를 하면 롱클릭 실행 후 그냥 클릭도 실행된다.
+        }
 
-//        리스튜뷰의 아이템 길게 눌렀을 때
+
 //            경고창. 진짜 삭제할 것인지 확인 -> 확인 눌렀을 때만 삭제.
 //                확인을 누르면 실행할 부분
         //목록(mStudentList)에서 제거 => 리스트뷰에서도 빠지게.
